@@ -5,11 +5,11 @@ https://colab.research.google.com/gist/ricosuhete/6b97ce298620912687fc985892a521
 
 # Problemas a serem resolvidos:
 
-- Obter a temperatura atual para uma lista de cidades do seu estado e armazenar os resultados em uma tabela SQL.
+✅- Obter a temperatura atual para uma lista de cidades do seu estado e armazenar os resultados em uma tabela SQL.
 
-- Analisar a temperatura máxima e mínima para cada cidade em um período de 30 dias e exibir os resultados em uma tabela SQL.
+⚠️- Analisar a temperatura máxima e mínima para cada cidade em um período de 30 dias e exibir os resultados em uma tabela SQL.
 
-- Determinar a cidade com a maior diferença entre a temperatura máxima e mínima e exibir o resultado em uma tabela SQL.
+✅- Determinar a cidade com a maior diferença entre a temperatura máxima e mínima e exibir o resultado em uma tabela SQL.
 
 - Identificar a cidade mais quente e a cidade mais fria em um período de 30 dias e exibir os resultados em uma tabela SQL.
 
