@@ -1,9 +1,9 @@
-# Desafio Dados2Dados: Consumindo API de tempo e temperatura com Python e SQL
+> # Desafio Dados2Dados: Consumindo API de tempo e temperatura com Python e SQL
 https://colab.research.google.com/gist/ricosuhete/6b97ce298620912687fc985892a52144/api_openweathermap.ipynb
 
-# STATUS: Iniciado.
+> # STATUS: Iniciado.
 
-# Problemas a serem resolvidos:
+> # Problemas a serem resolvidos:
 
 ✅- Obter a temperatura atual para uma lista de cidades do seu estado e armazenar os resultados em uma tabela SQL.
 

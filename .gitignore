@@ -1,3 +1,17 @@
 **.ipynb_checkpoint**
 **testes.ipynb**
 **.env**
+Colombo_weather_data.json
+Curitiba_weather_data.json
+Matinhos_weather_data.json
+Pinhais_weather_data.json
+data/INMET_S_PR_A807_CURITIBA_01-01-2023_A_30-09-2023.CSV
+data/INMET_S_PR_A807_CURITIBA_01-01-2023_A_30-09-2023.CSV:Zone.Identifier
+data/INMET_S_PR_B806_COLOMBO_01-01-2023_A_30-09-2023.CSV
+data/INMET_S_PR_B806_COLOMBO_01-01-2023_A_30-09-2023.CSV:Zone.Identifier
+dag_tempo.py
+etapa2.ipynb
+segundo_dag_tempo.py
+dag_tempo-Copy1.py
+dag_tempo_antiga.py
+dag_daily_tempo.py
