@@ -27,7 +27,7 @@ print("Configurando a variável de ambiente PYSPARK_SUBMIT_ARGS")
 os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.hadoop:hadoop-aws:3.3.1,io.delta:delta-spark_2.12:3.0.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" pyspark-shell'
 
 global API_KEY
-API_KEY = "1006d353c8fa20e289f975ff6839b5e4"
+API_KEY = ""
 
 
 # Função para coletar e processar os dados da API e salva em delta
