@@ -15,3 +15,7 @@ dag_tempo-Copy1.py
 dag_tempo_antiga.py
 dag_daily_tempo.py
 dag_tempo.py
+data/INMET_S_PR_A807_CURITIBA_01-01-2023_A_30-09-2023.CSVZone.Identifier
+data/INMET_S_PR_B806_COLOMBO_01-01-2023_A_30-09-2023.CSVZone.Identifier
+spark-warehouse
+desafio_pipeline.py

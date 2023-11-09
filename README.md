@@ -1,7 +1,43 @@
-> # Desafio Dados2Dados: Consumindo API de tempo e temperatura com Python e SQL
-https://colab.research.google.com/gist/ricosuhete/6b97ce298620912687fc985892a52144/api_openweathermap.ipynb
+> ## Etapa atual: inicio 09/11/2023
+> # Desafio Dados2Dados: Criando uma pipeline Delta Lake
+> <img src =  "assets/photo_2023-10-25_21-25-10.jpg">
 
-> # STATUS: Desafio Atendido, aguardando refatoração.
+>## STATUS: Iniciado.
+
+#### Requisitos:
+- Realizar instalação do WSL se estiver no Windows;
+- Instalar Docker;
+- Instalar MinIO;
+- Instalar jupyter/pyspark-notebook;
+- Instalar airflow.
+
+**Objetivo deste desafio é construir um Delta Lake e a sua pipeline utilizando os dados da API [OpenWeathermap](https://openweathermap.org/api);**
+
+Teremos 4 etapas:
+- A camada transient, que é a camada de extração (json, avro, csv, txt etc) 
+- Uma apenas de pegar os dados extraídos e convertidos para delta que seria a raw, aqui os dados são apenas convertidos para parquet delta. 
+- A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc) 
+- A camada refinada onde serão feita toda regra de negócio!
+
+O script de extração que está no airflow, ele sai de lá e vai para um script apartado ficará num bucket apenas para script, com a seguinte estrutura de pastas:
+- **transient:**
+   - spark.
+- **raw:**
+   - spark.
+- **trusted:**
+   - spark.
+- **refined:**
+   - spark;
+   - sql.
+
+Obs: O script de transient será o único que terá mais códigos Python, os demais serão 95% pyspark.
+#
+#
+
+> ## Etapa Inicial: 26/10/2023 a 01/11/2023
+> # Desafio Dados2Dados: Consumindo API de tempo e temperatura com Python e SQL
+> https://colab.research.google.com/gist/ricosuhete/6b97ce298620912687fc985892a52144/api_openweathermap.ipynb
+> ## STATUS: Desafio Atendido, aguardando refatoração.
 
 ## Nota Importante
 
@@ -18,7 +54,7 @@ Este projeto aborda um desafio específico de obtenção de dados climáticos da
 É importante destacar que, no momento, o histórico de dados disponíveis não abrange um período de 30 dias completos. Portanto, os resultados obtidos com a execução do código podem não atender às expectativas em relação a um intervalo de 30 dias. No entanto, à medida que mais dados históricos são coletados, será possível executar o código com um período de 30 dias e obter resultados mais precisos.
 
 
-> # Problemas resolvidos:
+> ## Primeiros problemas apontados:
 
 ✅- Obter a temperatura atual para uma lista de cidades do seu estado e armazenar os resultados em uma tabela SQL.
 
