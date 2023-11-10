@@ -2,7 +2,10 @@
 > # Desafio Dados2Dados: Criando uma pipeline Delta Lake
 > <img src =  "assets/photo_2023-10-25_21-25-10.jpg">
 
->## STATUS: Iniciado.
+>## STATUS: Em andamento.
+**Sobre o dessenvolvimento:**
+Foi desenvolvido um script apartado no contexto do diretório **transient** para a extração de dados, juntamente com uma DAG que executa esse script diariamente. Além disso, criei um script apartado no contexto do diretório **raw** para converter o JSON armazenado no diretório **transient** em formato Delta, uma DAG agendada também foi implementada para executar esse script a cada 5 dias.
+
 
 #### Requisitos:
 - Realizar instalação do WSL se estiver no Windows;
@@ -13,20 +16,28 @@
 
 **Objetivo deste desafio é construir um Delta Lake e a sua pipeline utilizando os dados da API [OpenWeathermap](https://openweathermap.org/api);**
 
-Teremos 4 etapas:
-- A camada transient, que é a camada de extração (json, avro, csv, txt etc) 
-- Uma apenas de pegar os dados extraídos e convertidos para delta que seria a raw, aqui os dados são apenas convertidos para parquet delta. 
-- A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc) 
-- A camada refinada onde serão feita toda regra de negócio!
+**Teremos 4 etapas:**
 
-O script de extração que está no airflow, ele sai de lá e vai para um script apartado ficará num bucket apenas para script, com a seguinte estrutura de pastas:
-- **transient:**
+✅- A camada transient, que é a camada de extração (json, avro, csv, txt etc);
+
+✅- Uma apenas de pegar os dados extraídos e convertidos para delta que seria a raw, aqui os dados são apenas convertidos para parquet delta;
+
+-A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc);
+
+-A camada refinada onde serão feita toda regra de negócio!
+
+**O script de extração que está no airflow, ele sai de lá e vai para um script apartado ficará num bucket apenas para script, com a seguinte estrutura de pastas:**
+
+✅- **transient:**
    - spark.
-- **raw:**
+
+✅- **raw:**
    - spark.
-- **trusted:**
+
+-**trusted:**
    - spark.
-- **refined:**
+
+-**refined:**
    - spark;
    - sql.
 
