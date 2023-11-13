@@ -5,10 +5,13 @@
 >## STATUS: Finalizando a contrução o DELTA LAKE.
 **ÚLtima atualização: 13/11/2023**
 
-**Sobre o dessenvolvimento:**
+**Sobre o desenvolvimento:**
 Foi desenvolvido um script apartado no contexto da camada **transient** para a extração de dados, juntamente com uma DAG que executa esse script diariamente. Além disso, criei um script apartado no contexto da camada **raw** para converter o JSON armazenado na camada **transient** em formato Delta, uma DAG agendada também foi implementada para executar esse script a cada 5 dias;
+
 Toda a pipeline agora esta rodando numa VM OCI;
+
 O script_tempo_raw foi refatorado;
+
 Criei o script apartado no contexto da camada **trusted** como tambpem a DAG no airflow.
 
 #### Requisitos:

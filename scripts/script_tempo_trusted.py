@@ -22,8 +22,8 @@ spark = SparkSession.builder.appName("DeltaTrusted").getOrCreate()
 print("Configurando as configurações do MinIO DadosTempo")
 spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "T3W1TJgMz6IypvxiCc96")
 spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "PC8jYTK7LifinMPnsgITdI7uZRj3d7v1Eqw0Ablw")
-#spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
-spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://localhost:9001")
+#spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://140.238.237.205:9001")
+spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://192.168.1.16:9001")
 spark.conf.set("spark.databricks.delta.schema.autoMerge.enabled", "true")
 
 # Ler o JSON
