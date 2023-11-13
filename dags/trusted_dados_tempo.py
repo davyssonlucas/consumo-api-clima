@@ -5,8 +5,8 @@ from airflow.operators.bash_operator import BashOperator
 # Configurações do MinIO
 minio_host = "140.238.237.205:9001"
 bucket_name = "scripts"
-folder_path = "raw"
-script_name = "script_tempo_raw.py"
+folder_path = "trusted"
+script_name = "script_tempo_trusted.py"
 minio_file_key = f"{folder_path}/{script_name}"
 minio_url = f"http://{minio_host}/{bucket_name}/{minio_file_key}"
 
@@ -22,27 +22,27 @@ default_args = {
 }
 
 dag = DAG(
-    'raw_dados_tempo',
+    'trusted_dados_tempo',
     default_args=default_args,
-    schedule_interval=timedelta(days=5),
+    schedule_interval=timedelta(days=10),
     catchup=False,
 )
 
 downloadscript_task = BashOperator(
     task_id='download_script',
-    bash_command=f'wget {minio_url} -O /tmp/script_tempo.py',
+    bash_command=f'wget {minio_url} -O /tmp/script_trusted.py',
     dag=dag,
 )
 
 execute_task = BashOperator(
     task_id='execute_script',
-    bash_command='python3 /tmp/script_tempo.py',
+    bash_command='python3 /tmp/script_trusted.py',
     dag=dag,
 )
 
 delete_task = BashOperator(
     task_id='delete_script',
-    bash_command='rm /tmp/script_tempo.py',
+    bash_command='rm /tmp/script_trusted.py',
     dag=dag,
 )
 

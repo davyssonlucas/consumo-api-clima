@@ -2,29 +2,36 @@
 > # Desafio Dados2Dados: Criando uma pipeline Delta Lake
 > <img src =  "assets/photo_2023-10-25_21-25-10.jpg">
 
->## STATUS: Em andamento.
-**Sobre o dessenvolvimento:**
-Foi desenvolvido um script apartado no contexto do diretório **transient** para a extração de dados, juntamente com uma DAG que executa esse script diariamente. Além disso, criei um script apartado no contexto do diretório **raw** para converter o JSON armazenado no diretório **transient** em formato Delta, uma DAG agendada também foi implementada para executar esse script a cada 5 dias.
+>## STATUS: Finalizando a contrução o DELTA LAKE.
+**ÚLtima atualização: 13/11/2023**
 
+**Sobre o dessenvolvimento:**
+Foi desenvolvido um script apartado no contexto da camada **transient** para a extração de dados, juntamente com uma DAG que executa esse script diariamente. Além disso, criei um script apartado no contexto da camada **raw** para converter o JSON armazenado na camada **transient** em formato Delta, uma DAG agendada também foi implementada para executar esse script a cada 5 dias;
+Toda a pipeline agora esta rodando numa VM OCI;
+Criei o script apartado no contexto da camada **trusted** como tambpem a DAG no airflow.
 
 #### Requisitos:
 - Realizar instalação do WSL se estiver no Windows;
 - Instalar Docker;
 - Instalar MinIO;
 - Instalar jupyter/pyspark-notebook;
-- Instalar airflow.
+- Instalar airflow;
+- Snowflake;
+- Superset.
 
-**Objetivo deste desafio é construir um Delta Lake e a sua pipeline utilizando os dados da API [OpenWeathermap](https://openweathermap.org/api);**
+### Objetivo deste desafio é construir um Delta Lake e a sua pipeline utilizando os dados da API [OpenWeathermap](https://openweathermap.org/api);
 
-**Teremos 4 etapas:**
+**Teremos 5 etapas:**
 
 ✅- A camada transient, que é a camada de extração (json, avro, csv, txt etc);
 
-✅- Uma apenas de pegar os dados extraídos e convertidos para delta que seria a raw, aqui os dados são apenas convertidos para parquet delta;
+✅- A raw é uma camada apenas para pegar os dados extraídos e converter-los para delta;
 
--A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc);
+✅-A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc);
 
--A camada refinada onde serão feita toda regra de negócio!
+-A camada refinada onde serão feita toda regra de negócio;
+
+- Criar report/dashboard (será utilizado o Superset).
 
 **O script de extração que está no airflow, ele sai de lá e vai para um script apartado ficará num bucket apenas para script, com a seguinte estrutura de pastas:**
 
@@ -34,7 +41,7 @@ Foi desenvolvido um script apartado no contexto do diretório **transient** para
 ✅- **raw:**
    - spark.
 
--**trusted:**
+✅-**trusted:**
    - spark.
 
 -**refined:**

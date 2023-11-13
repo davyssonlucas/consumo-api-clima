@@ -3,7 +3,7 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 
 # Configurações do MinIO
-minio_host = "192.168.1.16:9001"
+minio_host = "140.238.237.205:9001"
 bucket_name = "scripts"
 folder_path = "transient"
 script_name = "script_tempo_transient.py"

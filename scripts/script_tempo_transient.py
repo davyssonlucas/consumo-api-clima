@@ -8,7 +8,7 @@ print("Configurando a variável de ambiente PYSPARK_SUBMIT_ARGS")
 os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.hadoop:hadoop-aws:3.3.1 pyspark-shell'
 
 global API_KEY
-API_KEY = "1006d353c8fa20e289f975ff6839b5e4"
+API_KEY = ""
 
 state_code = "PR"
 country_code = "BR"
@@ -24,7 +24,8 @@ spark = SparkSession.builder.appName("DailyData").getOrCreate()
 print("Cofigurações MinIO")
 spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "T3W1TJgMz6IypvxiCc96")
 spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "PC8jYTK7LifinMPnsgITdI7uZRj3d7v1Eqw0Ablw")
-spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://192.168.1.16:9001")
+#spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
+spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://localhost:9001")
 
 list_city_name = ["curitiba", "pinhais", "colombo", "londrina"]
 
