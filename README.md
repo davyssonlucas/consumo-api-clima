@@ -1,4 +1,7 @@
-> ## Etapa atual: inicio 09/11/2023
+> ## Etapa 3: 
+> # Desafio: Pipeline de Dados - Implementar o Jenkins e conectar o Airflow ao snowflake.
+
+> ## Etapa 2: 09/11/2023 a 17/11/2023
 > # Desafio Dados2Dados: Criando uma pipeline Delta Lake
 > <img src =  "assets/photo_2023-10-25_21-25-10.jpg">
 
@@ -33,9 +36,9 @@ Criei o script apartado no contexto da camada **trusted** como tambpem a DAG no 
 
 ✅-A trusted que é a camada onde vai ser feito os tratamentos da tabela, tratamento seria, transformações (conversão de data, tratamento de nulos etc);
 
--A camada refinada onde serão feita toda regra de negócio;
+✅-A camada refinada onde serão feita toda regra de negócio;
 
-- Criar report/dashboard (será utilizado o Superset).
+✅- Criar report/dashboard (será utilizado o Superset).
 
 **O script de extração que está no airflow, ele sai de lá e vai para um script apartado ficará num bucket apenas para script, com a seguinte estrutura de pastas:**
 
@@ -48,7 +51,7 @@ Criei o script apartado no contexto da camada **trusted** como tambpem a DAG no 
 ✅-**trusted:**
    - spark.
 
--**refined:**
+✅-**refined:**
    - spark;
    - sql.
 

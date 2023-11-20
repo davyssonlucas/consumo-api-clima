@@ -22,8 +22,8 @@ print("Iniciando a sessão Spark")
 spark = SparkSession.builder.appName("DailyData").getOrCreate()
 # Cofigurações para salvar no MinIO
 print("Cofigurações MinIO")
-spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "T3W1TJgMz6IypvxiCc96")
-spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "PC8jYTK7LifinMPnsgITdI7uZRj3d7v1Eqw0Ablw")
+spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "")
+spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "")
 spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
 
 list_city_name = ["curitiba", "pinhais", "colombo", "londrina"]

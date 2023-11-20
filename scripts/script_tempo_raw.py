@@ -20,17 +20,16 @@ minio_path = "raw"
 print("Iniciando a sessão Spark")
 spark = SparkSession.builder.appName("JSONDelta").getOrCreate()
 # Cofigurações para salvar no MinIO
-print("Configurando as configurações do MinIO WeatherData")
-spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "T3W1TJgMz6IypvxiCc96")
-spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "PC8jYTK7LifinMPnsgITdI7uZRj3d7v1Eqw0Ablw")
-#spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
+print("Configurando as configurações da AWS WeatherData")
+spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "")
+spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "")
 spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
 spark.conf.set("spark.databricks.delta.schema.autoMerge.enabled", "true")
 
 data1 = spark.read.format("json").load(json_path)
 
 # Ler o JSON
-print("lendo dados do minIO")
+print("lendo dados do S3")
 df_city_temp = spark.read.json(data1.toJSON(), multiLine=True)
 
 print("criando tabela")

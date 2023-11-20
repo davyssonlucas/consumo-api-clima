@@ -20,10 +20,12 @@ print("Iniciando a sessão Spark")
 spark = SparkSession.builder.appName("DeltaTrusted").getOrCreate()
 # Cofigurações para salvar no MinIO
 print("Configurando as configurações do MinIO DadosTempo")
-spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "T3W1TJgMz6IypvxiCc96")
-spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "PC8jYTK7LifinMPnsgITdI7uZRj3d7v1Eqw0Ablw")
-#spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
+
+
+spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", "")
+spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "")
 spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "")
+
 spark.conf.set("spark.databricks.delta.schema.autoMerge.enabled", "true")
 
 # Ler o JSON
@@ -32,34 +34,30 @@ df_city_temp = spark.read.format("delta").load(delta_path)
 print("tratando dados da tabela")
 # Aplicar o esquema diretamente ao DataFrame
 df_city_temp = df_city_temp.select(
-    col("name").alias("cidade"),
-    when(col("country") == "BR", "Brasil")
-    .otherwise(col("country")).alias("país"),
-    col("lat").alias("latitude"),
-    col("lon").alias("longitude"),
-    concat(col("temp"), lit("C°")).alias("temperatura_atual"),
-    concat(col("temp_max"), lit("C°")).alias("temperatura_max"),
-    concat(col("temp_min"), lit("C°")).alias("temperatura_min"),
-    when(col("main") == "Clouds", "Nuvens")
-    .when(col("main") == "Clear", "Céu Limpo")
-    .when(col("main") == "Rain", "Chuva")
-    .otherwise(col("main")).alias("condicao_principal_do_clima"),
-    col("description").alias("descricao_do_clima"),
-    col("clouds").alias("nuvens"),
-    col("cod").alias("codigo"),
-    from_unixtime(col("dt")).alias("data_hora"),
-    col("timezone").alias("fuso_horario"),
-    concat(col("main_feels_like"),lit("C°")).alias("sensacao_termica"),
-    concat(col("humidity"), lit("%")).alias("umidade"),
-    col("pressure").alias("pressao_atmosferica"),
-    from_unixtime(col("sunrise")).alias("nascer_do_sol"),
-    from_unixtime(col("sunset")).alias("por_do_sol"),
-    concat(col("deg"), lit("°")).alias("direção_do_vento"),
-    concat(col("speed"), lit("m/s")).alias("velocidade_do_vento"),
+    col("name").alias("city"),
+    col("country").alias("country"),
+    col("lat").alias("lat"),
+    col("lon").alias("lon"),
+    col("temp").alias("temp"),
+    col("temp_max").alias("temp_max"),
+    col("temp_min").alias("temp_min"),
+    col("main").alias("main_weather"),
+    col("description").alias("description"),
+    col("clouds").alias("clouds"),
+    col("cod").alias("cod"),
+    from_unixtime(col("dt")).alias("date_hour"),
+    col("timezone").alias("timezone"),
+    col("main_feels_like").alias("main_feels_like"),
+    col("humidity").alias("humidity"),
+    col("pressure").alias("pressure"),
+    from_unixtime(col("sunrise")).alias("sunrise"),
+    from_unixtime(col("sunset")).alias("sunset"),
+    col("deg").alias("deg"),
+    col("speed").alias("speed"),
     col("id").alias("id"),
-    col("icon").alias("icone_do_clima"),
-    col("weather_id").alias("id_clima"),
-    concat(col("visibility"), lit("m")).alias("visibilidade")
+    col("icon").alias("icon"),
+    col("weather_id").alias("weather_id"),
+    col("visibility").alias("visibility")
     )
 
 print("salvando dados tratados na camada trusted")

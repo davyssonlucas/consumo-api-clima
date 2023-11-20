@@ -1,14 +1,17 @@
 from datetime import datetime, timedelta
 from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
+import boto3
 
 # Configurações do MinIO
-minio_host = "140.238.237.205:9001"
-bucket_name = "scripts"
+minio_host = ""
+bucket_name = "scripts-deltalake"
 folder_path = "raw"
 script_name = "script_tempo_raw.py"
+access_key = ""
+secret_key = ""
 minio_file_key = f"{folder_path}/{script_name}"
-minio_url = f"http://{minio_host}/{bucket_name}/{minio_file_key}"
 
 # Configurações da DAG
 default_args = {
@@ -28,9 +31,18 @@ dag = DAG(
     catchup=False,
 )
 
-downloadscript_task = BashOperator(
+def download_from_s3(**kwargs):
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=access_key,
+        aws_secret_access_key=secret_key,
+    )
+    s3.download_file(bucket_name, minio_file_key, '/tmp/script_tempo.py')
+
+downloadscript_task = PythonOperator(
     task_id='download_script',
-    bash_command=f'wget {minio_url} -O /tmp/script_tempo.py',
+    python_callable=download_from_s3,
+    provide_context=True,
     dag=dag,
 )
 
